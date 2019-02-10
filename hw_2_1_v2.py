@@ -3,15 +3,21 @@ second_num = input('Введите число b: ').strip()
 summ = 0  # сумма всех натуральных чисел
 error = False
 
+cnt_point1 = 0 #счетчики точек
+cnt_point2 = 0
 for x in first_num:
     if (x.isalpha() or x == ' '):
         error = True
+    elif (x == '.'):
+        cnt_point1 += 1
 
 for x in second_num:
     if (x.isalpha() or x == ' '):
         error = True
+    elif (x == '.'):
+        cnt_point2 += 1
 
-if not error and first_num != '' and second_num != '':
+if not error and first_num != '' and second_num != '' and cnt_point1 < 2 and cnt_point2 < 2:
     if (float(first_num) >= 0 and float(second_num) >= 0):
         diff = float(first_num) - float(second_num)  # ищем начало и конец диапазона
         if diff < 0:
