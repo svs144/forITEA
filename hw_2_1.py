@@ -1,6 +1,7 @@
-first_num = input('Введите число a: ')
-second_num = input('Введите число b: ')
+first_num = input('Введите число a: ').strip()
+second_num = input('Введите число b: ').strip()
 summ = 0  # сумма всех натуральных чисел
+
 
 if (float(first_num) >= 0 and float(second_num) >= 0):
     diff = float(first_num) - float(second_num)  # ищем начало и конец диапазона
