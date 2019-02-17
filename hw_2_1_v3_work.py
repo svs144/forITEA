@@ -5,17 +5,31 @@ error = False
 
 cnt_point1 = 0  # счетчики точек
 cnt_point2 = 0
+cnt_minus1 = 0  # счетчики минусов
+cnt_minus2 = 0
 for x in first_num:
-    if (x.isalpha() or x == ' '):
+    if (x.isdigit()):
+        pass
+    elif (x.isalpha()):
         error = True
     elif (x == '.'):
         cnt_point1 += 1
+    elif (x == '-'):
+        cnt_minus1 += 1
+    else:
+        error = True
 
 for x in second_num:
-    if (x.isalpha() or x == ' '):
+    if (x.isdigit()):
+        pass
+    elif (x.isalpha()):
         error = True
     elif (x == '.'):
         cnt_point2 += 1
+    elif (x == '-'):
+        cnt_minus2 += 1
+    else:
+        error = True
 
 if not error and first_num != '' and second_num != '' and cnt_point1 < 2 and cnt_point2 < 2:
     if float(first_num) < float(second_num):
