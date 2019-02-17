@@ -31,7 +31,7 @@ for x in second_num:
     else:
         error = True
 
-if not error and first_num != '' and second_num != '' and cnt_point1 < 2 and cnt_point2 < 2:
+if not error and first_num != '' and second_num != '' and cnt_point1 < 2 and cnt_point2 < 2 and cnt_minus1 < 2 and cnt_minus2 < 2:
     if float(first_num) < float(second_num):
         start = int(first_num) if first_num.isdigit() else float(first_num)
         end = int(second_num) if second_num.isdigit() else float(second_num)
