@@ -39,8 +39,11 @@ if not error and first_num != '' and second_num != '' and cnt_point1 < 2 and cnt
         start = int(second_num) if second_num.isdigit() else float(second_num)
         end = int(first_num) if first_num.isdigit() else float(first_num)
     else:
-        if not first_num.isdigit() or first_num == '0':
-            print('Сумма натуральных чисел в диапазоне от ', first_num, ' до ', second_num, '>>> 0')
+        if not first_num.isdigit():
+            if float(first_num) == int(float(first_num)):
+                print('Сумма натуральных чисел в диапазоне от ', first_num, ' до ', second_num, '>>> ', int(float(first_num)))
+            else:
+                print('Сумма натуральных чисел в диапазоне от ', first_num, ' до ', second_num, '>>> 0')
         else:
             print('Сумма натуральных чисел в диапазоне от', first_num, ' до ', second_num, '>>> ', first_num)
         exit()
