@@ -48,7 +48,7 @@ if not error and first_num != '' and second_num != '' and cnt_point1 < 2 and cnt
             print('Сумма натуральных чисел в диапазоне от', first_num, ' до ', second_num, '>>> ', first_num)
         exit()
     print('Сумма натуральных чисел в диапазоне от ', start, ' до ', end, '>>> ', end='')
-    rez_isset = False  # если не найдены числа, то дописываем строку "не найдено"
+    rez_isset = False  # если не найдены числа, то дописываем '0'
     show_float = False
     end = int(end) + 1
     while start < end:
