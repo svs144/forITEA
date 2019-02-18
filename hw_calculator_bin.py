@@ -2,7 +2,7 @@ def calc_to_bin(number):
     rez = '';
     while True:
         x,y = divmod(number, 2)
-        rez = str(number - x * 2) + rez
+        rez = str(y) + rez
         number = x
         if x < 2:
             if x == 1:
