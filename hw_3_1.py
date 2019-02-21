@@ -39,7 +39,6 @@ def sum_natural_numbers(a, b):
                 return 0
         else:
             return a
-        exit()
     rez_isset = False  # если не найдены числа, то дописываем '0'
     show_float = False
     end = int(end) + 1
