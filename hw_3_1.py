@@ -22,7 +22,7 @@ def validate_numbers(input_num):
     return num_ok
 
 
-# Вывод суммы натуральных чисел
+# Расчет суммы натуральных чисел
 def sum_natural_numbers(a, b):
     summ = 0  # сумма всех натуральных чисел
     if float(a) < float(b):
