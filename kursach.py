@@ -36,7 +36,9 @@ try:
         print('Связь с сервером MongoDB установлена!')
 except:
     print('Сервер MongoDB не найден!')
-
+    DB_ISSET = False
+    if work_mode > 1:
+        exit()
 
 #########################
 # Обьяление функций
