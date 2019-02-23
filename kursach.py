@@ -4,16 +4,49 @@ import pymongo
 from urllib.parse import quote
 from time import gmtime, strftime
 
+# Константы БД
 DB_NAME = 'vacancy'
 DB_TABLE = 'professions'
-DB_ISSET = False
+
+# Флаг подключения к БД
+db_isset = False
 
 # Приветствие
 print('=== Поиск вакансии на портале Rabota.ua by Андрей Н. (ITEA, PythonBase Feb 2019) ===')
 
+#########################
+# Обьяление функций
+#########################
+# Показать все записи БД
+def showRecords():
+    if db_isset:
+        count_rec = 0
+        for rec in mycol.find().sort("name", pymongo.ASCENDING):
+            print(rec)
+            count_rec += 1
+        print('Извлечено {} записей!'.format(count_rec))
+    exit()
+
+
+# Удалить все записи БД (Truncate Таблицу)
+def deleteRecords():
+    if db_isset:
+        x = mycol.delete_many({})
+        print(x.deleted_count, " записей удалено.")
+    exit()
+
+
+# Добавление  записи в БД
+def addRecord(current_job, current_company, current_price):
+    if db_isset:
+        add_record = {"name": current_job, "company": current_company, "salary": current_price, "link": current_link}
+        mycol.insert_one(add_record)
+
+
+#####################
 # Выбор режима работы
 work_mode = input(
-    'Введите режим работы ( 1 - поиск и добавлений новых записей, 2 - извлечение всех записей БД, 3 - форматироние БД; по умолчанию - 1): ')
+    'Введите режим работы ( \n\t 1 - поиск и добавлений новых записей (по умолчанию), \n\t 2 - извлечение всех записей БД, \n\t 3 - форматироние БД.\n) >>> ')
 if len(work_mode.strip()) == 0:
     work_mode = 1
 # Если не удается получить режим работы , то выходим с программы
@@ -30,45 +63,13 @@ try:
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
     mydb = myclient[DB_NAME]
     mycol = mydb[DB_TABLE]
-    DB_ISSET = True
+    db_isset = True
     dblist = myclient.list_database_names()
     if DB_NAME in dblist:
         print('Связь с сервером MongoDB установлена!')
 except:
     print('Сервер MongoDB не найден!')
-    DB_ISSET = False
-    if work_mode > 1:
-        exit()
-
-#########################
-# Обьяление функций
-#########################
-# Показать все записи БД
-def showRecords():
-    if DB_ISSET:
-        count_rec = 0
-        for rec in mycol.find().sort("name", pymongo.ASCENDING):
-            print(rec)
-            count_rec += 1
-        print('Извлечено {} записей!'.format(count_rec))
-    exit()
-
-
-# Удалить все записи БД
-def deleteRecords():
-    x = mycol.delete_many({})
-    print(x.deleted_count, " записей удалено.")
-    exit()
-
-
-# Добавление  записи в БД
-def addRecord(current_job, current_company, current_price):
-    if DB_ISSET:
-        add_record = {"name": current_job, "company": current_company, "salary": current_price, "link": current_link}
-        mycol.insert_one(add_record)
-
-
-#####################
+    db_isset = False
 
 if work_mode == 3:
     deleteRecords()
