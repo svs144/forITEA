@@ -88,4 +88,5 @@ def show_stat(dict):
     print('--- Статистика слов --->')
 
 
-show_stat(text_stat(input_text(), ['понедельник','суббота'], 'вторник', {0:'среда',4:'четвер'}))
+#show_stat(text_stat(input_text(), ['понедельник','суббота'], 'вторник', {0:'среда',4:'четвер'}))
+show_stat(text_stat(input_text()))
